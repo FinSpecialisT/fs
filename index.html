@@ -1,111 +1,243 @@
-<!-- Updated HTML template with centered button text -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FinSpecialisT</title>
-    <style>
-        body {
-            background: #191919;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-        .section {
-            margin: 20px auto;
-            width: 90%;
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: #2a2a2a;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #ffffff;
-            text-decoration: none;
-            text-align: center;
-        }
-        .subtext {
-            margin-top: -10px;
-            margin-bottom: 15px;
-            color: #cfcfcf;
-            font-size: 14px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinSpecialisT</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #1f1f1f;
+        color: white;
+    }
 
-        .grid2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+    .page { display: none; padding: 20px; }
+    .active { display: block; }
+    .center { text-align: center; }
 
-        .socials {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 10px;
-            margin-top: 25px;
-        }
-        .socials a {
-            padding: 12px;
-            background: #2f2f2f;
-            border-radius: 10px;
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-            text-align: center;
-        }
+    .logo {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        margin: 20px auto;
+        border: 3px solid #3a7bd5;
+    }
 
-        footer {
-            margin-top: 40px;
-            margin-bottom: 30px;
-            font-size: 14px;
-            color: #aaa;
-        }
-    </style>
+    /* TOMBOL MENU + EFEK TEKAN */
+    .menu-btn {
+        width: 100%;
+        background: #2a2a2a;
+        color: white;
+        padding: 15px;
+        margin: 10px 0;
+        text-align: center;
+        border-radius: 10px;
+        border: 1px solid #3a7bd5;
+        font-size: 18px;
+        transition: transform 0.08s ease, background 0.15s ease;
+    }
+
+    .menu-btn:active {
+        transform: scale(0.97);
+        background: #353535;
+    }
+
+    .item-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .item-box {
+        background: #2a2a2a;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #3a7bd5;
+        text-align: center;
+    }
+
+    .item-box img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .cart-btn {
+        margin-top: 8px;
+        padding: 8px;
+        background: #3a7bd5;
+        color: #fff;
+        border-radius: 8px;
+        transition: transform 0.08s ease;
+    }
+
+    .cart-btn:active {
+        transform: scale(0.95);
+    }
+
+    .socmed a {
+        display: block;
+        color: #5aa1ff;
+        margin: 4px 0;
+        text-decoration: none;
+    }
+
+    .footer-space { height: 50px; }
+
+    .cart-icon {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        background: #3a7bd5;
+        padding: 10px 14px;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>
+<script>
+function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+}
+</script>
 </head>
+
 <body>
+<div class="cart-icon">🛒</div>
 
-    <h2 style="margin-top: 25px;">FinSpecialisT</h2>
+<!-- HOME -->
+<div id="home" class="page active center">
+    <img src="logo.jpg" class="logo">
 
-    <div class="section">
-        <div class="grid2">
-            <a class="btn" href="#">Molly Specialist</a>
-            <a class="btn" href="#">Guppy Specialist</a>
-            <div class="subtext">Sipaling Imut</div>
-            <div class="subtext">Sipaling Elegan</div>
+    <p>FinSpecialisT • Menyediakan Ikan Hias Berkualitas Tinggi</p>
 
-            <a class="btn" href="#">Cupang Specialist</a>
-            <a class="btn" href="#">Ikan Lain</a>
-            <div class="subtext">Sipaling Arogan</div>
-            <div class="subtext">(4 kotak kategori ikan lain)</div>
+    <button class="menu-btn" onclick="showPage('molly')">Molly Specialist<br><small>• Si Paling Imut</small></button>
+    <button class="menu-btn" onclick="showPage('guppy')">Guppy SpecialisT<br><small>• Si Paling Elegan</small></button>
+    <button class="menu-btn" onclick="showPage('cupang')">SpecialisT Cupang<br><small>• Si Paling Arogan</small></button>
+    <button class="menu-btn" onclick="showPage('ikanlain')">Ikan Lain<br><small>• Si Paling Random</small></button>
+    <button class="menu-btn" onclick="showPage('perlengkapan')">Perlengkapan<br><small>• Si Paling Dokter Ikan</small></button>
+    <button class="menu-btn" onclick="showPage('stiker')">Sticker SpecialisT<br><small>• Si Paling Koleksi</small></button>
+    <button class="menu-btn" onclick="showPage('bantuan')">Bantuan / Informasi</button>
+
+    <h3>FinSpecialisT</h3>
+    <p>Ikan hias • perlengkapan • sticker koleksi</p>
+
+    <div class="socmed">
+        <a href="https://www.tiktok.com/@finspecialist?_r=1&_t=ZS-91PsiRxLudQ" target="_blank">TikTok</a>
+        <a href="https://www.instagram.com/fin_specialist?igsh=d3EybXhlaTFoY3Aw" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/share/1Bd96sQPpw/" target="_blank">Facebook</a>
+        <a href="https://wa.me/6285646746618" target="_blank">WhatsApp</a>
+    </div>
+
+    <div class="footer-space"></div>
+</div>
+
+<!-- MOLLY -->
+<div id="molly" class="page">
+    <h2>Molly Specialist</h2>
+    <div class="item-grid">
+        <div class="item-box">
+            <img src="molly1.jpg">
+            <p>Molly A<br>Rp 10.000</p>
+            <div class="cart-btn">Tambah</div>
         </div>
-
-        <a class="btn" href="#">Perlengkapan</a>
-        <div class="subtext">Sipaling Dokter Ikan</div>
-
-        <a class="btn" href="#">Sticker Specialist</a>
-        <div class="subtext">Sipaling Koleksi</div>
-
-        <a class="btn" style="width:60%; margin:auto;" href="#">Bantuan / Informasi</a>
+        <div class="item-box">
+            <img src="molly2.jpg">
+            <p>Molly B<br>Rp 12.000</p>
+            <div class="cart-btn">Tambah</div>
+        </div>
     </div>
+</div>
 
-    <p style="width:85%; margin:auto; color:#ccc; margin-top:40px;">
-        FinSpecialisT — Koleksi ikan hias & perlengkapan berkualitas. Jual online, packing aman, praktek pengiriman profesional.
-    </p>
-
-    <div class="socials">
-        <a href="#">WA</a>
-        <a href="#">IG</a>
-        <a href="#">FB</a>
-        <a href="#">TikTok</a>
+<!-- GUPPY -->
+<div id="guppy" class="page">
+    <h2>Guppy SpecialisT</h2>
+    <div class="item-grid">
+        <div class="item-box">
+            <img src="guppy1.jpg">
+            <p>Guppy A<br>Rp 8.000</p>
+            <div class="cart-btn">Tambah</div>
+        </div>
+        <div class="item-box">
+            <img src="guppy2.jpg">
+            <p>Guppy B<br>Rp 15.000</p>
+            <div class="cart-btn">Tambah</div>
+        </div>
     </div>
+</div>
 
-    <footer>© 2025 FinSpecialisT</footer>
+<!-- CUPANG -->
+<div id="cupang" class="page">
+    <h2>SpecialisT Cupang</h2>
+    <div class="item-grid">
+        <div class="item-box">
+            <img src="cupang1.jpg">
+            <p>Cupang A<br>Rp 20.000</p>
+            <div class="cart-btn">Tambah</div>
+        </div>
+        <div class="item-box">
+            <img src="cupang2.jpg">
+            <p>Cupang B<br>Rp 25.000</p>
+            <div class="cart-btn">Tambah</div>
+        </div>
+    </div>
+</div>
+
+<!-- IKAN LAIN -->
+<div id="ikanlain" class="page">
+    <h2>Ikan Lain</h2>
+    <div class="item-grid">
+        <div class="item-box"><img src="ikan1.jpg"><p>Ikan X</p></div>
+        <div class="item-box"><img src="ikan2.jpg"><p>Ikan Y</p></div>
+        <div class="item-box"><img src="ikan3.jpg"><p>Ikan Z</p></div>
+        <div class="item-box"><img src="ikan4.jpg"><p>Ikan W</p></div>
+    </div>
+</div>
+
+<!-- PERLENGKAPAN -->
+<div id="perlengkapan" class="page">
+    <h2>Perlengkapan</h2>
+    <div class="item-grid">
+        <div class="item-box">
+            <img src="perl1.jpg">
+            <p>Perlengkapan 1<br>Rp 5.000</p>
+            <div class="cart-btn">Tambah</div>
+        </div>
+        <div class="item-box">
+            <img src="perl2.jpg">
+            <p>Perlengkapan 2<br>Rp 6.000</p>
+            <div class="cart-btn">Tambah</div>
+        </div>
+    </div>
+</div>
+
+<!-- STIKER -->
+<div id="stiker" class="page">
+    <h2>Sticker SpecialisT</h2>
+    <div class="item-grid">
+        <div class="item-box">
+            <img src="stiker1.jpg">
+            <p>Stiker A</p>
+        </div>
+        <div class="item-box">
+            <img src="stiker2.jpg">
+            <p>Stiker B</p>
+        </div>
+    </div>
+</div>
+
+<!-- BANTUAN -->
+<div id="bantuan" class="page">
+    <h2>Bantuan / Informasi</h2>
+    <p>Silakan hubungi kami jika butuh bantuan.</p>
+</div>
 
 </body>
 </html>
