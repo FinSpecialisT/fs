@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FinSpecialisT Store</title>
 <style>
-  body { margin:0; font-family:Arial; background:#111; color:white; }
+  body { margin:0; font-family:Arial,sans-serif; background:#111; color:white; }
   .hidden { display:none; }
-  header { display:flex; justify-content:space-between; padding:15px; background:#000; }
-  .cart-icon { cursor:pointer; }
+  header { display:flex; justify-content:space-between; align-items:center; padding:15px; background:#000; }
+  .cart-icon { cursor:pointer; font-size:20px; }
   .page { padding:15px; }
-  .grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
-  .item { background:#1a1a1a; padding:10px; border:1px solid #1e3a8a; border-radius:10px; }
+  .grid { display:grid; gap:15px; justify-items:center; }
+  .grid-2 { grid-template-columns:repeat(2,1fr); }
+  .grid-1 { grid-template-columns:1fr; }
+  .item { background:#1a1a1a; padding:10px; border:1px solid #1e3a8a; border-radius:10px; text-align:center; width:100%; max-width:200px; }
   .item img { width:100%; border-radius:10px; }
-  button { width:100%; padding:8px; margin-top:8px; border:none; border-radius:8px; background:#1e40af; color:white; cursor:pointer; }
-  button.back { background:#333; }
+  button { width:100%; padding:10px; margin-top:8px; border:none; border-radius:8px; background:#1e40af; color:white; cursor:pointer; font-size:16px; }
+  button.back { background:#333; margin-bottom:10px; }
   .social { text-align:center; margin-top:20px; font-size:14px; }
   .social a { color:#3b82f6; margin:0 5px; text-decoration:none; }
+  .logo { width:120px; height:120px; border-radius:50%; display:block; margin:20px auto; }
+  h1, h2 { text-align:center; margin:10px 0; }
 </style>
 </head>
 <body>
@@ -26,20 +30,25 @@
   <div class="cart-icon" onclick="showCart()">🛒</div>
 </header>
 
-<!-- HOME -->
 <div id="home" class="page">
-  <div style="text-align:center;">
-    <img src="logo.jpg" style="width:120px; height:120px; border-radius:50%;" />
-    <p>FinSpecialisT • Ikan Hias Berkualitas</p>
-  </div>
+  <img src="logo.jpg" class="logo" alt="Logo FinSpecialisT">
+  <h1>FinSpecialisT • Menyediakan Ikan Hias Berkualitas</h1>
 
-  <div class="grid">
+  <div class="grid grid-2">
     <button onclick="showPage('molly')">Molly Specialist</button>
-    <button onclick="showPage('guppy')">Guppy SpecialisT</button>
-    <button onclick="showPage('cupang')">SpecialisT Cupang</button>
+    <button onclick="showPage('guppy')">Guppy Specialist</button>
+  </div>
+  <div class="grid grid-2">
+    <button onclick="showPage('cupang')">Cupang Specialist</button>
     <button onclick="showPage('ikanlain')">Ikan Lain</button>
+  </div>
+  <div class="grid grid-1">
     <button onclick="showPage('perlengkapan')">Perlengkapan</button>
-    <button onclick="showPage('stiker')">Sticker SpecialisT</button>
+  </div>
+  <div class="grid grid-1">
+    <button onclick="showPage('stiker')">Sticker Collector</button>
+  </div>
+  <div class="grid grid-1">
     <button onclick="showPage('bantuan')">Bantuan / Informasi</button>
   </div>
 
@@ -51,19 +60,41 @@
   </div>
 </div>
 
-<!-- TEMPLATE PAGES -->
-<div id="molly" class="page hidden"></div>
-<div id="guppy" class="page hidden"></div>
-<div id="cupang" class="page hidden"></div>
-<div id="ikanlain" class="page hidden"></div>
-<div id="perlengkapan" class="page hidden"></div>
-<div id="stiker" class="page hidden"></div>
+<div id="molly" class="page hidden">
+  <button class="back" onclick="showPage('home')">← Kembali</button>
+  <h2>Molly Specialist</h2>
+  <div class="grid grid-2" id="mollyGrid"></div>
+</div>
+<div id="guppy" class="page hidden">
+  <button class="back" onclick="showPage('home')">← Kembali</button>
+  <h2>Guppy Specialist</h2>
+  <div class="grid grid-2" id="guppyGrid"></div>
+</div>
+<div id="cupang" class="page hidden">
+  <button class="back" onclick="showPage('home')">← Kembali</button>
+  <h2>Cupang Specialist</h2>
+  <div class="grid grid-2" id="cupangGrid"></div>
+</div>
+<div id="ikanlain" class="page hidden">
+  <button class="back" onclick="showPage('home')">← Kembali</button>
+  <h2>Ikan Lain</h2>
+  <div class="grid grid-2" id="ikanLainGrid"></div>
+</div>
+<div id="perlengkapan" class="page hidden">
+  <button class="back" onclick="showPage('home')">← Kembali</button>
+  <h2>Perlengkapan</h2>
+  <div class="grid grid-2" id="perlengkapanGrid"></div>
+</div>
+<div id="stiker" class="page hidden">
+  <button class="back" onclick="showPage('home')">← Kembali</button>
+  <h2>Sticker Collector</h2>
+  <div class="grid grid-2" id="stikerGrid"></div>
+</div>
 <div id="bantuan" class="page hidden">
   <button class="back" onclick="showPage('home')">← Kembali</button>
-  <p>Silakan hubungi kami jika membutuhkan bantuan.</p>
+  <h2>Bantuan / Informasi</h2>
+  <p>Hubungi kami untuk pertanyaan, konsultasi, atau pemesanan. Tim kami siap membantu secara profesional. Pastikan semua detail pemesanan jelas sebelum checkout. Gunakan WhatsApp untuk respon cepat.</p>
 </div>
-
-<!-- CART PAGE -->
 <div id="cart" class="page hidden">
   <button class="back" onclick="showPage('home')">← Kembali</button>
   <h2>Keranjang</h2>
@@ -72,42 +103,28 @@
 </div>
 
 <script>
-let cart = [];
-
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
+let cart=[];
+function showPage(id){try{document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}catch(e){console.error(e);}}
+function showCart(){showPage('cart');renderCart();}
+function renderCart(){let box=document.getElementById('cartItems');try{if(cart.length===0){box.innerHTML='<p>Keranjang kosong.</p>';return;}box.innerHTML=cart.map(i=>`<div>- ${i.name} ${i.size? '('+i.size+')':''} ${i.price? 'Rp '+i.price:''}</div>`).join('');}catch(e){console.error(e);}}
+function addFish(name,priceRemaja,priceDewasa){try{let size=prompt("Pilih ukuran: Remaja / Dewasa");if(!size)return;size=size.toLowerCase();let price=size==='remaja'?priceRemaja:priceDewasa;cart.push({name,size,price});alert("Ditambahkan ke keranjang");}catch(e){console.error(e);}}
+function addItem(name,price){try{cart.push({name,price});alert("Ditambahkan ke keranjang");}catch(e){console.error(e);}}
+function addSticker(name){try{cart.push({name});alert("Ditambahkan ke keranjang");}catch(e){console.error(e);}}
+function checkout(){try{if(cart.length===0)return alert("Keranjang kosong");let text="Halo, saya ingin membeli:%0A"+cart.map(i=>`- ${i.name} ${i.size? '('+i.size+')':''} ${i.price? 'Rp '+i.price:''}`).join('%0A');location.href="https://wa.me/6285646746618?text="+text;}catch(e){console.error(e);}}
+function generateItems(){try{
+for(let i=1;i<=20;i++){
+document.getElementById('mollyGrid').innerHTML+=`<div class='item'><img src='molly${i}.jpg'><p>Molly ${i}</p><button onclick='addFish("Molly ${i}",1000,20000)'>Tambah</button></div>`;
+document.getElementById('guppyGrid').innerHTML+=`<div class='item'><img src='guppy${i}.jpg'><p>Guppy ${i}</p><button onclick='addFish("Guppy ${i}",1000,20000)'>Tambah</button></div>`;
+document.getElementById('cupangGrid').innerHTML+=`<div class='item'><img src='cupang${i}.jpg'><p>Cupang ${i}</p><button onclick='addFish("Cupang ${i}",1000,20000)'>Tambah</button></div>`;
+document.getElementById('stikerGrid').innerHTML+=`<div class='item'><img src='stiker${i}.jpg'><p>Sticker ${i}</p><button onclick='addSticker("Sticker ${i}")'>Tambah</button></div>`;
 }
-function showCart(){ showPage('cart'); renderCart(); }
-
-function renderCart(){
-  let box = document.getElementById('cartItems');
-  if(cart.length===0){ box.innerHTML = '<p>Keranjang kosong.</p>'; return; }
-  box.innerHTML = cart.map(i=>`<div>- ${i.name} ${i.size? '('+i.size+')':''} ${i.price? 'Rp '+i.price:''}</div>`).join('');
+for(let i=1;i<=10;i++){
+document.getElementById('perlengkapanGrid').innerHTML+=`<div class='item'><img src='alat${i}.jpg'><p>Perlengkapan ${i} – Rp ${i*5000}</p><button onclick='addItem("Perlengkapan ${i}",${i*5000})'>Tambah</button></div>`;
 }
-
-function addFish(name, priceRemaja, priceDewasa){
-  let size = prompt("Pilih ukuran: Remaja / Dewasa");
-  if(!size) return;
-  size = size.toLowerCase();
-  let price = size === 'remaja' ? priceRemaja : priceDewasa;
-  cart.push({name, size, price});
-  alert("Ditambahkan ke keranjang");
-}
-function addItem(name, price){
-  cart.push({name, price});
-  alert("Ditambahkan ke keranjang");
-}
-function addSticker(name){
-  cart.push({name});
-  alert("Ditambahkan ke keranjang");
-}
-
-function checkout(){
-  if(cart.length===0) return alert("Keranjang kosong");
-  let text = "Halo, saya ingin membeli:%0A" + cart.map(i=>`- ${i.name} ${i.size? '('+i.size+')':''} ${i.price? 'Rp '+i.price:''}`).join('%0A');
-  location.href = "https://wa.me/6285646746618?text=" + text;
-}
+['Ikan X','Ikan Y','Ikan Z','Ikan W'].forEach((name,i)=>{
+document.getElementById('ikanLainGrid').innerHTML+=`<div class='item'><img src='ikan${i+1}.jpg'><p>${name}</p></div>`;
+});}catch(e){console.error(e);}}
+window.onload=generateItems;
 </script>
 
 </body>
